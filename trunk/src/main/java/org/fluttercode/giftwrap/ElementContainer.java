@@ -33,7 +33,7 @@ import org.fluttercode.giftwrap.elements.Packages;
  * @author Andy Gibson
  * 
  */
-public class ElementHolder extends AbstractArchiveElement {
+public class ElementContainer extends AbstractArchiveElement {
 
 	List<ArchiveElement> elements = new ArrayList<ArchiveElement>();
 
@@ -44,33 +44,33 @@ public class ElementHolder extends AbstractArchiveElement {
 		}		
 	}
 
-	public ElementHolder addElement(ArchiveElement element) {
+	public ElementContainer addElement(ArchiveElement element) {
 		elements.add(element);
 		return this;
 	}
 
-	public ElementHolder removeElement(ArchiveElement element) {
+	public ElementContainer removeElement(ArchiveElement element) {
 		elements.remove(element);
 		return this;
 	}
 
-	public ElementHolder addClass(Class<?> clazz) {
+	public ElementContainer addClass(Class<?> clazz) {
 		return addClass(clazz, false);
 	}
 
-	public ElementHolder addClass(Class<?> clazz, boolean recursive) {
+	public ElementContainer addClass(Class<?> clazz, boolean recursive) {
 		return addElement(new ClassElement(clazz, recursive));
 	}
 
-	public ElementHolder addPackage(Package pkge, boolean recursive) {
+	public ElementContainer addPackage(Package pkge, boolean recursive) {
 		return addElement(new Packages(pkge, recursive));
 	}
 
-	public ElementHolder addPackage(Package pkge) {
+	public ElementContainer addPackage(Package pkge) {
 		return addElement(new Packages(pkge));
 	}
 	
-	public ElementHolder addPackage(String packageName) {
+	public ElementContainer addPackage(String packageName) {
 		Package p = Package.getPackage(packageName);
 		if (p == null) {
 			throw new IllegalArgumentException("Package "+packageName+" not found");

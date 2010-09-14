@@ -50,6 +50,8 @@ public interface DeploymentContext {
 	void startConstruction();
 	void endConstruction();
 	
+	void addProfile(String profile);
+	void removeProfile(String profile);
 	List<String> getProfiles();
 	
 }

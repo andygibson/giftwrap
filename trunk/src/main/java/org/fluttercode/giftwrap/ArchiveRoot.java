@@ -29,7 +29,7 @@ import org.jboss.shrinkwrap.api.spec.JavaArchive;
  * @author Andy Gibson
  * 
  */
-public class ArchiveRoot extends ElementHolder {
+public class ArchiveRoot extends ElementContainer {
 
 
 
@@ -44,7 +44,6 @@ public class ArchiveRoot extends ElementHolder {
 	}
 
 	public void fillArchive(DeploymentContext context) {
-		System.out.println("******* Starting to fill archive ************");
 		context.startConstruction();
 		append(context);
 		context.endConstruction();

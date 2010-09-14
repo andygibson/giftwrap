@@ -23,7 +23,6 @@
 
 package org.fluttercode.giftwrap;
 
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -40,7 +39,7 @@ public abstract class AbstractDeploymentContext implements DeploymentContext {
 	private PartialFileList resourcePartialFiles = new PartialFileList();
 	private PartialFileList manifestPartialFiles = new PartialFileList();
 	private Map<String, Object> parameterMap = new HashMap<String, Object>();
-	
+
 	private List<String> profiles = new ArrayList<String>();
 
 	protected PartialFileList getResourcePartialFiles() {
@@ -58,7 +57,7 @@ public abstract class AbstractDeploymentContext implements DeploymentContext {
 	public void reset() {
 		classesAdded.clear();
 		resourcePartialFiles.clear();
-		manifestPartialFiles.clear();		
+		manifestPartialFiles.clear();
 	}
 
 	public void addPartialManifestResource(String name, String content,
@@ -98,8 +97,27 @@ public abstract class AbstractDeploymentContext implements DeploymentContext {
 		return parameterMap;
 	}
 
+	protected List<Class<?>> getClassesAdded() {
+		return classesAdded;
+	}
+
 	@Override
-	public List<String> getProfiles() {	
+	public List<String> getProfiles() {
 		return profiles;
 	}
+
+	@Override
+	public void addProfile(String profile) {
+		if (!profiles.contains(profile)) {
+			profiles.add(profile);
+		}
+	}
+
+	@Override
+	public void removeProfile(String profile) {
+		while (profiles.contains(profile)) {
+			profiles.remove(profile);
+		}
+	}
+
 }

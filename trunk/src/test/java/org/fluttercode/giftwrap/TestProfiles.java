@@ -23,13 +23,15 @@
 
 package org.fluttercode.giftwrap;
 
-import org.fluttercode.giftwrap.AbstractArchiveElement;
-import org.fluttercode.giftwrap.ArchiveElement;
-import org.fluttercode.giftwrap.ArchiveRoot;
-import org.fluttercode.giftwrap.DeploymentContext;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+
 import org.fluttercode.giftwrap.elements.ClassElement;
 import org.fluttercode.giftwrap.elements.PartialManifestFileElement;
-import org.junit.Assert;
+import org.fluttercode.giftwrap.testmodel.Car;
+import org.fluttercode.giftwrap.testmodel.Person;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -51,23 +53,23 @@ public class TestProfiles {
 	@Test
 	public void testProfileActiveByDefault() {
 		ArchiveElement element = new ClassElement(TestProfiles.class);
-		Assert.assertTrue(element.isActive(dc));		
+		assertTrue(element.isActive(dc));		
 	}
 
 	@Test
 	public void testProfileInactiveExclusion() {
 		ArchiveElement element = new ClassElement(TestProfiles.class);
 		element.addExcludeProfile("SOMEVALUE");
-		Assert.assertTrue(element.isActive(dc));		
+		assertTrue(element.isActive(dc));		
 	}
 
 	@Test
 	public void testProfileActiveOnDemand() {
 		ArchiveElement element = new ClassElement(TestProfiles.class);
 		element.addIncludeProfile("PROFILE");
-		Assert.assertFalse(element.isActive(dc));
+		assertFalse(element.isActive(dc));
 		dc.getProfiles().add("PROFILE");
-		Assert.assertTrue(element.isActive(dc));
+		assertTrue(element.isActive(dc));
 	}
 
 	@Test
@@ -83,17 +85,80 @@ public class TestProfiles {
 		//check the middle doesn't appear in the final document
 		root.fillArchive(dc);
 		String s = dc.getManifestPartialFiles().buildFileContent("test");
-		Assert.assertNotNull(s);
-		Assert.assertEquals("<beans></beans>",s);
+		assertNotNull(s);
+		assertEquals("<beans></beans>",s);
+		
 		dc.reset();
+		
+		//check that the middle now appears since we have the profile included.
 		dc.getProfiles().add(PROFILE);
-		Assert.assertTrue(elem.isActive(dc));
+		assertTrue(elem.isActive(dc));
 		root.fillArchive(dc);
 		s = dc.getManifestPartialFiles().buildFileContent("test");
-		System.out.println("XML + "+s);
-		Assert.assertEquals("<beans><somexml></beans>",s);
 		
-
+		assertEquals("<beans><somexml></beans>",s);
 	}
+	
+	@Test
+	public void testProfileExlusions() {
+
+		ArchiveElement element = new ClassElement(this.getClass());
+		element.addIncludeProfile("USE");
+		root.addElement(element);
+		dc.getProfiles().add("IGNORE");
+		dc.getProfiles().add("USE");
+		root.fillArchive(dc);
+		assertTrue(element.isActive(dc));
+		assertTrue(dc.getClassesAdded().contains(this.getClass()));
+		
+		dc.reset();
+		
+		element.addExcludeProfile("IGNORE");
+		assertFalse(element.isActive(dc));
+		assertFalse(dc.getClassesAdded().contains(this.getClass()));
+		
+	}
+	
+	@Test
+	public void testContainerBranching() {
+
+		ElementContainer container1 = new ElementContainer();
+		ElementContainer container2 = new ElementContainer();
+		
+		ArchiveElement element1 = new ClassElement(Person.class);
+		ArchiveElement element2 = new ClassElement(Car.class);
+		
+		container1.addElement(element1);
+		container2.addElement(element2);
+		
+		container1.addIncludeProfile("C1");
+		container2.addIncludeProfile("C2");
+		
+		root.addElement(container1);
+		root.addElement(container2);
+
+		//check they are both included
+		assertFalse(container1.isActive(dc));
+		assertFalse(container2.isActive(dc));
+		assertTrue(element1.isActive(dc));
+		assertTrue(element2.isActive(dc));
+		
+		root.fillArchive(dc);
+		assertFalse(dc.contains(Person.class));
+		assertFalse(dc.contains(Car.class));
+
+		dc.addProfile("C2");
+		root.fillArchive(dc);
+
+		assertFalse(container1.isActive(dc));
+		assertTrue(container2.isActive(dc));
+		assertTrue(element1.isActive(dc));
+		assertTrue(element2.isActive(dc));
+
+		assertFalse(dc.contains(Person.class));
+		assertTrue(dc.contains(Car.class));
+		
+	}
+
 
 }

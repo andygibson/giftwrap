@@ -99,9 +99,7 @@ public class ArchiveDeployment extends AbstractDeploymentContext {
 
 	@Override
 	public void doAddClass(Class<?> clazz) {
-		System.out.println("---------adding class " + clazz.getCanonicalName());
 		getArchive().addClass(clazz);
-
 	}
 
 	public void startConstruction() {

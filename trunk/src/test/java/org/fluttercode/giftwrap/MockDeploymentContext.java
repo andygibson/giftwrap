@@ -94,5 +94,11 @@ public class MockDeploymentContext extends AbstractDeploymentContext {
 		reset();
 		log.add("Starting construction");
 	}
-
+	
+	@Override
+	public List<Class<?>> getClassesAdded() {
+		// TODO Auto-generated method stub
+		return super.getClassesAdded();
+	}
+	
 }
