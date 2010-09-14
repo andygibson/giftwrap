@@ -51,14 +51,14 @@ public class TestClassDeployments {
 	public void testSimpleDeployment() {
 		root.addClass(Person.class);
 		
-		root.fillArchive(dc);
+		root.produceDeployment(dc);
 		Assert.assertTrue(dc.contains(Person.class));
 	}
 	
 	@Test
 	public void testRecursiveClassDeployment() {
 		root.addClass(Person.class,true);
-		root.fillArchive(dc);
+		root.produceDeployment(dc);
 		Assert.assertTrue(dc.contains(Person.class));
 		Assert.assertTrue(dc.contains(Car.class));
 		Assert.assertTrue(dc.contains(Company.class));

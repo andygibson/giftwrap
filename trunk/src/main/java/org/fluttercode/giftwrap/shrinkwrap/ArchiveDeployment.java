@@ -21,7 +21,7 @@
  *
  */
 
-package org.fluttercode.giftwrap;
+package org.fluttercode.giftwrap.shrinkwrap;
 
 import java.io.File;
 import java.net.URL;
@@ -29,6 +29,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.fluttercode.giftwrap.AbstractDeploymentContext;
+import org.fluttercode.giftwrap.ArchiveRoot;
 import org.jboss.shrinkwrap.api.ArchivePath;
 import org.jboss.shrinkwrap.api.ArchivePaths;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
@@ -44,6 +46,12 @@ public class ArchiveDeployment extends AbstractDeploymentContext {
 	private JavaArchive archive;
 
 	private Map<String, Object> parameterMap = new HashMap<String, Object>();
+
+	public static JavaArchive generate(ArchiveRoot root) {
+		ArchiveDeployment deployment = new ArchiveDeployment();
+		root.produceDeployment(deployment);
+		return deployment.getArchive();
+	}
 
 	public ArchiveDeployment(JavaArchive archive) {
 		this.archive = archive;
@@ -103,10 +111,11 @@ public class ArchiveDeployment extends AbstractDeploymentContext {
 	}
 
 	public void startConstruction() {
-		reset();		
+		reset();
 	}
-	
+
 	public void endConstruction() {
-		//todo build and add partial files	
+		// todo build and add partial files
 	}
+
 }

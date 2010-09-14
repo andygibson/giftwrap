@@ -54,7 +54,7 @@ public class TestPartialFiles {
 		root.addElement(new PartialManifestFileElement("testResource","xyz").excludeNewLine());
 		
 		//get element
-		root.fillArchive(dc);
+		root.produceDeployment(dc);
 		PartialFileList files = dc.getManifestPartialFiles();
 		Assert.assertNotNull(files);
 		String s= files.buildFileContent("testResource");
@@ -68,7 +68,7 @@ public class TestPartialFiles {
 		root.addElement(new PartialManifestFileElement("testResource","123",0).excludeNewLine());
 		
 		//get element
-		root.fillArchive(dc);
+		root.produceDeployment(dc);
 		PartialFileList files = dc.getManifestPartialFiles();
 		Assert.assertNotNull(files);
 		String s= files.buildFileContent("testResource");

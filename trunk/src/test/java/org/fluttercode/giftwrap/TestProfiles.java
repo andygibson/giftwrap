@@ -83,7 +83,7 @@ public class TestProfiles {
 		root.addElement(new PartialManifestFileElement("test", "</beans>",1000).excludeNewLine());
 		
 		//check the middle doesn't appear in the final document
-		root.fillArchive(dc);
+		root.produceDeployment(dc);
 		String s = dc.getManifestPartialFiles().buildFileContent("test");
 		assertNotNull(s);
 		assertEquals("<beans></beans>",s);
@@ -93,7 +93,7 @@ public class TestProfiles {
 		//check that the middle now appears since we have the profile included.
 		dc.getProfiles().add(PROFILE);
 		assertTrue(elem.isActive(dc));
-		root.fillArchive(dc);
+		root.produceDeployment(dc);
 		s = dc.getManifestPartialFiles().buildFileContent("test");
 		
 		assertEquals("<beans><somexml></beans>",s);
@@ -107,7 +107,7 @@ public class TestProfiles {
 		root.addElement(element);
 		dc.getProfiles().add("IGNORE");
 		dc.getProfiles().add("USE");
-		root.fillArchive(dc);
+		root.produceDeployment(dc);
 		assertTrue(element.isActive(dc));
 		assertTrue(dc.getClassesAdded().contains(this.getClass()));
 		
@@ -143,12 +143,12 @@ public class TestProfiles {
 		assertTrue(element1.isActive(dc));
 		assertTrue(element2.isActive(dc));
 		
-		root.fillArchive(dc);
+		root.produceDeployment(dc);
 		assertFalse(dc.contains(Person.class));
 		assertFalse(dc.contains(Car.class));
 
 		dc.addProfile("C2");
-		root.fillArchive(dc);
+		root.produceDeployment(dc);
 
 		assertFalse(container1.isActive(dc));
 		assertTrue(container2.isActive(dc));
@@ -160,5 +160,7 @@ public class TestProfiles {
 		
 	}
 
+	
+	
 
 }

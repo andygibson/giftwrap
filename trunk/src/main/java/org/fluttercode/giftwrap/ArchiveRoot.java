@@ -23,6 +23,7 @@
 
 package org.fluttercode.giftwrap;
 
+import org.fluttercode.giftwrap.shrinkwrap.ArchiveDeployment;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 
 /**
@@ -31,19 +32,17 @@ import org.jboss.shrinkwrap.api.spec.JavaArchive;
  */
 public class ArchiveRoot extends ElementContainer {
 
-
-
-	public ArchiveRoot() {
+ 	public ArchiveRoot() {
 		addPackage(this.getClass().getPackage());
 	}
 
 	public JavaArchive produceArchive() {
 		ArchiveDeployment dc = new ArchiveDeployment();
-		fillArchive(dc);
+		produceDeployment(dc);
 		return dc.getArchive();
 	}
 
-	public void fillArchive(DeploymentContext context) {
+	public void produceDeployment(DeploymentContext context) {
 		context.startConstruction();
 		append(context);
 		context.endConstruction();
