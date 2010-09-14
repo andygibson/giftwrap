@@ -1,4 +1,4 @@
-package org.fluttercode.arqbuilder;
+package org.fluttercode.giftwrap;
 
 import org.fluttercode.giftwrap.ArchiveElement;
 import org.fluttercode.giftwrap.ArchiveRoot;
@@ -24,6 +24,7 @@ public class TestPartialFiles {
 	public void testPartialFile() {
 		root.addElement(new PartialManifestFileElement("testResource","abc").excludeNewLine());
 		root.addElement(new PartialManifestFileElement("testResource","123").excludeNewLine());
+		root.addElement(new PartialManifestFileElement("testResource","xyz").excludeNewLine());
 		
 		//get element
 		root.fillArchive(dc);
@@ -31,7 +32,7 @@ public class TestPartialFiles {
 		Assert.assertNotNull(files);
 		String s= files.buildFileContent("testResource");
 		
-		Assert.assertEquals("abc123", s);
+		Assert.assertEquals("abc123xyz", s);
 	}
 	
 	@Test

@@ -2,6 +2,7 @@ package org.fluttercode.giftwrap;
 
 import java.io.File;
 import java.net.URL;
+import java.util.List;
 import java.util.Map;
 
 public interface DeploymentContext {
@@ -22,5 +23,6 @@ public interface DeploymentContext {
 	void startConstruction();
 	void endConstruction();
 	
+	List<String> getProfiles();
 	
 }

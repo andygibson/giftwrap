@@ -3,6 +3,7 @@ package org.fluttercode.giftwrap;
 import java.io.File;
 import java.net.URL;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.jboss.shrinkwrap.api.ArchivePath;
@@ -56,13 +57,13 @@ public class ArchiveDeployment extends AbstractDeploymentContext {
 	}
 
 	public void reset() {
+		super.reset();
 		if (archive == null) {
 			this.archive = ShrinkWrap.create(JavaArchive.class, "test.jar");
 		} else {
 			this.archive = ShrinkWrap.create(JavaArchive.class, archive
 					.getName());
 		}
-
 	}
 
 	public void addManifestResource(URL url, String name) {

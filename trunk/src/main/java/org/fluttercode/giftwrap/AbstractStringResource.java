@@ -6,7 +6,7 @@ package org.fluttercode.giftwrap;
  * @author Andy Gibson
  *
  */
-public abstract class AbstractStringResource implements ArchiveElement {
+public abstract class AbstractStringResource extends AbstractArchiveElement {
 
 	private final String name;
 
@@ -14,7 +14,8 @@ public abstract class AbstractStringResource implements ArchiveElement {
 		this.name = name;
 	}
 
-	public void append(DeploymentContext context) {	
+	@Override
+	public void doAppend(DeploymentContext context) {	
 		String content = doGenerateContent();
 		doAppendContent(content,context);		
 	}

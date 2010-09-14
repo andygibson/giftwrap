@@ -1,4 +1,4 @@
-package org.fluttercode.arqbuilder;
+package org.fluttercode.giftwrap;
 
 import java.io.File;
 import java.net.URL;
@@ -64,6 +64,7 @@ public class MockDeploymentContext extends AbstractDeploymentContext {
 	}
 
 	public void startConstruction() {
+		reset();
 		log.add("Starting construction");
 	}
 

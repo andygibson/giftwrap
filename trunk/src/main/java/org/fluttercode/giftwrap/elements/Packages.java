@@ -3,11 +3,12 @@ package org.fluttercode.giftwrap.elements;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.fluttercode.giftwrap.AbstractArchiveElement;
 import org.fluttercode.giftwrap.ArchiveElement;
 import org.fluttercode.giftwrap.DeploymentContext;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 
-public class Packages implements ArchiveElement {
+public class Packages extends AbstractArchiveElement {
 
 	private List<Package> packageList = new ArrayList<Package>();
 	private boolean recursive;
@@ -29,7 +30,8 @@ public class Packages implements ArchiveElement {
 		this.recursive = recursive;
 	}
 
-	public void append(DeploymentContext context) {
+	@Override
+	public void doAppend(DeploymentContext context) {
 		for (Package p : packageList) {
 			context.addPackage(p,recursive);
 		}

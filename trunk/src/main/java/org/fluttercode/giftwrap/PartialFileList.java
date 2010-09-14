@@ -53,4 +53,8 @@ public class PartialFileList {
 		List<FileFragment> fragments = findFragments(name);
 		fragments.add(new FileFragment(content,order));
 	}
+	
+	public void clear() {
+		fragmentMap.clear();
+	}
 }

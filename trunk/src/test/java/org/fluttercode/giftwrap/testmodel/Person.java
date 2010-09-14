@@ -1,4 +1,4 @@
-package org.fluttercode.arqbuilder.testmodel;
+package org.fluttercode.giftwrap.testmodel;
 
 public class Person {
 

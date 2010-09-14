@@ -6,11 +6,12 @@ import java.util.List;
 import org.fluttercode.giftwrap.elements.ClassElement;
 import org.fluttercode.giftwrap.elements.Packages;
 
-public class ElementHolder implements ArchiveElement {
+public class ElementHolder extends AbstractArchiveElement {
 
 	List<ArchiveElement> elements = new ArrayList<ArchiveElement>();
 
-	public void append(DeploymentContext context) {
+	@Override
+	public void doAppend(DeploymentContext context) {
 		for (ArchiveElement element : elements) {
 			element.append(context);
 		}		

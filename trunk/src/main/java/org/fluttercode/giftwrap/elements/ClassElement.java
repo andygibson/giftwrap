@@ -8,10 +8,10 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import org.fluttercode.giftwrap.ArchiveElement;
+import org.fluttercode.giftwrap.AbstractArchiveElement;
 import org.fluttercode.giftwrap.DeploymentContext;
 
-public class ClassElement implements ArchiveElement {
+public class ClassElement extends AbstractArchiveElement {
 
 	public enum DependencyType {
 		FIELDS, INTERFACES, ANCESTORS, METHODS, CUSTOM
@@ -51,7 +51,8 @@ public class ClassElement implements ArchiveElement {
 		return dependencyTypes;
 	}
 
-	public void append(DeploymentContext context) {
+	@Override
+	public void doAppend(DeploymentContext context) {
 		List<Class<?>> classesAdded = new ArrayList<Class<?>>();
 		addClass(clazz, classesAdded);
 

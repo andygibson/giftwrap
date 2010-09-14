@@ -13,6 +13,8 @@ public abstract class AbstractDeploymentContext implements DeploymentContext {
 	private PartialFileList resourcePartialFiles = new PartialFileList();
 	private PartialFileList manifestPartialFiles = new PartialFileList();
 	private Map<String, Object> parameterMap = new HashMap<String, Object>();
+	
+	private List<String> profiles = new ArrayList<String>();
 
 	protected PartialFileList getResourcePartialFiles() {
 		return resourcePartialFiles;
@@ -28,6 +30,8 @@ public abstract class AbstractDeploymentContext implements DeploymentContext {
 
 	public void reset() {
 		classesAdded.clear();
+		resourcePartialFiles.clear();
+		manifestPartialFiles.clear();		
 	}
 
 	public void addPartialManifestResource(String name, String content,
@@ -67,4 +71,8 @@ public abstract class AbstractDeploymentContext implements DeploymentContext {
 		return parameterMap;
 	}
 
+	@Override
+	public List<String> getProfiles() {	
+		return profiles;
+	}
 }

@@ -1,10 +1,10 @@
-package org.fluttercode.arqbuilder;
+package org.fluttercode.giftwrap;
 
-import org.fluttercode.arqbuilder.testmodel.Car;
-import org.fluttercode.arqbuilder.testmodel.Company;
-import org.fluttercode.arqbuilder.testmodel.Person;
-import org.fluttercode.arqbuilder.testmodel.Vehicle;
 import org.fluttercode.giftwrap.ArchiveRoot;
+import org.fluttercode.giftwrap.testmodel.Car;
+import org.fluttercode.giftwrap.testmodel.Company;
+import org.fluttercode.giftwrap.testmodel.Person;
+import org.fluttercode.giftwrap.testmodel.Vehicle;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
