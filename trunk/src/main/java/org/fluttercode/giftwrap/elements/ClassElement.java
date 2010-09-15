@@ -58,6 +58,9 @@ public class ClassElement extends AbstractArchiveElement {
 		globallyExemptClasses.add(Date.class.getName());
 		globallyExemptClasses.add(BigDecimal.class.getName());
 		globallyExemptClasses.add(Number.class.getName());
+		globallyExemptClasses.add(String.class.getName());
+		globallyExemptClasses.add("int");
+		globallyExemptClasses.add("long");
 		globallyExemptClasses.add("int");
 	}
 

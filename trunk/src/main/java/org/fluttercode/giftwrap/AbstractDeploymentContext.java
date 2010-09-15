@@ -119,5 +119,20 @@ public abstract class AbstractDeploymentContext implements DeploymentContext {
 			profiles.remove(profile);
 		}
 	}
+	
+	@Override
+	public void endConstruction() {
+		//assemble and add partial files
+		for (String s : resourcePartialFiles.nameSet()) {
+			String content = resourcePartialFiles.buildFileContent(s);
+			//addResource(content,s);
+		}
+
+		for (String s : manifestPartialFiles.nameSet()) {
+			String content = manifestPartialFiles.buildFileContent(s);
+			addManifestResource(content, s);
+		}
+		
+	}
 
 }

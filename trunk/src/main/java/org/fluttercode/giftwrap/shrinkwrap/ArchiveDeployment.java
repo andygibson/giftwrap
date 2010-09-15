@@ -114,8 +114,4 @@ public class ArchiveDeployment extends AbstractDeploymentContext {
 		reset();
 	}
 
-	public void endConstruction() {
-		// todo build and add partial files
-	}
-
 }

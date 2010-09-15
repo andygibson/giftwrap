@@ -28,6 +28,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * @author Andy Gibson
@@ -83,5 +84,9 @@ public class PartialFileList {
 	
 	public void clear() {
 		fragmentMap.clear();
+	}
+	
+	public Set<String> nameSet() {
+		return fragmentMap.keySet();
 	}
 }

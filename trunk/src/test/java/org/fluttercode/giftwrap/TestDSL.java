@@ -15,8 +15,8 @@ public class TestDSL {
 		ArchiveRoot root = new ArchiveRoot();
 		root.addElement(new ElementContainer()
 				    .addClass(Person.class)
+				    .addClass(Car.class)
 				    .addIncludeProfile("test")
-				    .addClass(Car.class)					
 					.addIncludeProfile("test2")
 					)
 		.addElement(new ElementContainer()

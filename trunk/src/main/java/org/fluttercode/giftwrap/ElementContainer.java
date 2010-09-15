@@ -33,7 +33,7 @@ import org.fluttercode.giftwrap.elements.Packages;
  * @author Andy Gibson
  * 
  */
-public class ElementContainer extends AbstractArchiveElement {
+public class ElementContainer extends AbstractArchiveElement{
 
 	List<ArchiveElement> elements = new ArrayList<ArchiveElement>();
 
