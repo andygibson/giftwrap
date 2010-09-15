@@ -31,8 +31,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import org.fluttercode.giftwrap.AbstractArchiveElement;
 import org.fluttercode.giftwrap.api.DeploymentContext;
+import org.fluttercode.giftwrap.impl.AbstractArchiveElement;
 
 /**
  * @author Andy Gibson

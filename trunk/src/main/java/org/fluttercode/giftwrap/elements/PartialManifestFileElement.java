@@ -23,8 +23,8 @@
 
 package org.fluttercode.giftwrap.elements;
 
-import org.fluttercode.giftwrap.AbstractPartialFileElement;
 import org.fluttercode.giftwrap.api.DeploymentContext;
+import org.fluttercode.giftwrap.impl.AbstractPartialFileElement;
 
 /**
  * @author Andy Gibson

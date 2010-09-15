@@ -1,6 +1,7 @@
 package org.fluttercode.giftwrap;
 
 import org.fluttercode.giftwrap.api.ElementContainer;
+import org.fluttercode.giftwrap.impl.ArchiveRoot;
 import org.fluttercode.giftwrap.shrinkwrap.ArchiveDeployment;
 import org.fluttercode.giftwrap.testmodel.Car;
 import org.fluttercode.giftwrap.testmodel.Company;

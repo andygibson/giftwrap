@@ -23,7 +23,7 @@
 
 package org.fluttercode.giftwrap;
 
-import org.fluttercode.giftwrap.ArchiveRoot;
+import org.fluttercode.giftwrap.impl.ArchiveRoot;
 import org.fluttercode.giftwrap.testmodel.Car;
 import org.fluttercode.giftwrap.testmodel.Company;
 import org.fluttercode.giftwrap.testmodel.Person;

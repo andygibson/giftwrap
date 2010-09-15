@@ -21,7 +21,7 @@
  *
  */
 
-package org.fluttercode.giftwrap;
+package org.fluttercode.giftwrap.impl;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -28,8 +28,8 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.fluttercode.giftwrap.AbstractDeploymentContext;
-import org.fluttercode.giftwrap.PartialFileList;
+import org.fluttercode.giftwrap.impl.AbstractDeploymentContext;
+import org.fluttercode.giftwrap.impl.PartialFileList;
 
 /**
  * @author Andy Gibson

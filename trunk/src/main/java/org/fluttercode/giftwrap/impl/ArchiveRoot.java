@@ -21,33 +21,34 @@
  *
  */
 
-package org.fluttercode.giftwrap;
+package org.fluttercode.giftwrap.impl;
 
+import org.fluttercode.giftwrap.api.DeploymentContext;
+import org.fluttercode.giftwrap.api.ElementContainer;
+import org.fluttercode.giftwrap.shrinkwrap.ArchiveDeployment;
+import org.jboss.shrinkwrap.api.spec.JavaArchive;
 
 /**
  * @author Andy Gibson
  * 
  */
-public abstract class AbstractPartialFileElement extends
-		AbstractMultilineStringElement {
+public class ArchiveRoot extends ElementContainer {
 
-	private int order;
-
-	public AbstractPartialFileElement(String name, String content) {
-		this(name, content, 0);
+ 	public ArchiveRoot() {
+		addPackage(this.getClass().getPackage());
 	}
 
-	public AbstractPartialFileElement(String name, String content, int order) {
-		super(name);
-		getLines().add(content);
-		this.order = order;
+	public JavaArchive produceArchive() {
+		ArchiveDeployment dc = new ArchiveDeployment();
+		produceDeployment(dc);
+		return dc.getArchive();
 	}
 
-	public int getOrder() {
-		return order;
+	public void produceDeployment(DeploymentContext context) {
+		context.startConstruction();
+		append(context);
+		context.endConstruction();
+		
 	}
 
-	public void setOrder(int order) {
-		this.order = order;
-	}
 }

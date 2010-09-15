@@ -21,34 +21,33 @@
  *
  */
 
-package org.fluttercode.giftwrap;
-
-import org.fluttercode.giftwrap.api.DeploymentContext;
+package org.fluttercode.giftwrap.impl;
 
 
 /**
- * Abstract class for adding manifest resources that are based on string content 
  * @author Andy Gibson
- *
+ * 
  */
-public abstract class AbstractStringResource extends AbstractArchiveElement {
+public abstract class AbstractPartialFileElement extends
+		AbstractMultilineStringElement {
 
-	private final String name;
+	private int order;
 
-	public AbstractStringResource(String name) {
-		this.name = name;
+	public AbstractPartialFileElement(String name, String content) {
+		this(name, content, 0);
 	}
 
-	@Override
-	public void doAppend(DeploymentContext context) {	
-		String content = doGenerateContent();
-		doAppendContent(content,context);		
+	public AbstractPartialFileElement(String name, String content, int order) {
+		super(name);
+		getLines().add(content);
+		this.order = order;
 	}
 
-	public String getName() {
-		return name;
+	public int getOrder() {
+		return order;
 	}
-	protected abstract String doGenerateContent();
-	protected abstract void doAppendContent(String content,DeploymentContext context);
 
+	public void setOrder(int order) {
+		this.order = order;
+	}
 }

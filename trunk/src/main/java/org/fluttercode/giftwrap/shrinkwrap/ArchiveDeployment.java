@@ -29,8 +29,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.fluttercode.giftwrap.AbstractDeploymentContext;
-import org.fluttercode.giftwrap.ArchiveRoot;
+import org.fluttercode.giftwrap.impl.AbstractDeploymentContext;
+import org.fluttercode.giftwrap.impl.ArchiveRoot;
 import org.jboss.shrinkwrap.api.ArchivePath;
 import org.jboss.shrinkwrap.api.ArchivePaths;
 import org.jboss.shrinkwrap.api.ShrinkWrap;

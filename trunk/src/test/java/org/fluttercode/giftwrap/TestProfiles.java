@@ -32,6 +32,7 @@ import org.fluttercode.giftwrap.api.ArchiveElement;
 import org.fluttercode.giftwrap.api.ElementContainer;
 import org.fluttercode.giftwrap.elements.ClassElement;
 import org.fluttercode.giftwrap.elements.PartialManifestFileElement;
+import org.fluttercode.giftwrap.impl.ArchiveRoot;
 import org.fluttercode.giftwrap.testmodel.Car;
 import org.fluttercode.giftwrap.testmodel.Person;
 import org.junit.Before;

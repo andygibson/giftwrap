@@ -21,34 +21,34 @@
  *
  */
 
-package org.fluttercode.giftwrap;
+package org.fluttercode.giftwrap.impl;
 
 import org.fluttercode.giftwrap.api.DeploymentContext;
-import org.fluttercode.giftwrap.api.ElementContainer;
-import org.fluttercode.giftwrap.shrinkwrap.ArchiveDeployment;
-import org.jboss.shrinkwrap.api.spec.JavaArchive;
+
 
 /**
+ * Abstract class for adding manifest resources that are based on string content 
  * @author Andy Gibson
- * 
+ *
  */
-public class ArchiveRoot extends ElementContainer {
+public abstract class AbstractStringResource extends AbstractArchiveElement {
 
- 	public ArchiveRoot() {
-		addPackage(this.getClass().getPackage());
+	private final String name;
+
+	public AbstractStringResource(String name) {
+		this.name = name;
 	}
 
-	public JavaArchive produceArchive() {
-		ArchiveDeployment dc = new ArchiveDeployment();
-		produceDeployment(dc);
-		return dc.getArchive();
+	@Override
+	public void doAppend(DeploymentContext context) {	
+		String content = doGenerateContent();
+		doAppendContent(content,context);		
 	}
 
-	public void produceDeployment(DeploymentContext context) {
-		context.startConstruction();
-		append(context);
-		context.endConstruction();
-		
+	public String getName() {
+		return name;
 	}
+	protected abstract String doGenerateContent();
+	protected abstract void doAppendContent(String content,DeploymentContext context);
 
 }
