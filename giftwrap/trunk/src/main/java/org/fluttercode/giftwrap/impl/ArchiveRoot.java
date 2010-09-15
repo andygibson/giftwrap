@@ -35,7 +35,7 @@ import org.jboss.shrinkwrap.api.spec.JavaArchive;
 public class ArchiveRoot extends ElementContainer {
 
  	public ArchiveRoot() {
-		addPackage(this.getClass().getPackage());
+		addPackage(Package.getPackage("org.fluttercode.giftwrap"),true);
 	}
 
 	public JavaArchive produceArchive() {
