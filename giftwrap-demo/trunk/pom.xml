@@ -18,7 +18,7 @@
 			<groupId>org.jboss.arquillian</groupId>
 			<artifactId>arquillian-junit</artifactId>
 			<version>1.0.0.Alpha3</version>
-			<scope>test</scope>
+			<scope>compile</scope>
 		</dependency>
 
 		<dependency>

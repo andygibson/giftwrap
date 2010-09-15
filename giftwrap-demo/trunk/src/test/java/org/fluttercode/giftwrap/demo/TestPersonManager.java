@@ -39,6 +39,7 @@ import org.jboss.arquillian.api.Run;
 import org.jboss.arquillian.api.RunModeType;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.Archive;
+import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -61,6 +62,7 @@ public class TestPersonManager {
 		root.addClass(DefaultRatingProducer.class);
 		root.addClass(NorthEastRatingProducer.class);
 		root.addPackage("org.fluttercode.giftwrap.demo.model");
+		root.addPackage("org.shrinkwrap");
 		
 		root.addElement(new PartialManifestFileElement(BEANS_FILE, "<beans>",-99))
 		.addElement(new PartialManifestFileElement(BEANS_FILE, "<alternatives>",-10))
@@ -72,7 +74,10 @@ public class TestPersonManager {
 		//ArchiveDeployment dp = new ArchiveDeployment();
 		//dp.addProfile("NE");
 		
-		return ArchiveDeployment.generate(root);
+		JavaArchive ar = ArchiveDeployment.generate(root);
+		System.out.println("Archive  = "+ar);
+		return ar;
+		
 	}
 
 	@Test
