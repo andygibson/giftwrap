@@ -21,7 +21,7 @@
  *
  */
 
-package org.fluttercode.giftwrap;
+package org.fluttercode.giftwrap.api;
 
 import java.io.File;
 import java.net.URL;

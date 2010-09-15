@@ -24,7 +24,7 @@
 package org.fluttercode.giftwrap.elements;
 
 import org.fluttercode.giftwrap.AbstractStringResource;
-import org.fluttercode.giftwrap.DeploymentContext;
+import org.fluttercode.giftwrap.api.DeploymentContext;
 
 /**
  * @author Andy Gibson

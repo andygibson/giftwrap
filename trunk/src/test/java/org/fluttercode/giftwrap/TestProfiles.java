@@ -28,6 +28,8 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
+import org.fluttercode.giftwrap.api.ArchiveElement;
+import org.fluttercode.giftwrap.api.ElementContainer;
 import org.fluttercode.giftwrap.elements.ClassElement;
 import org.fluttercode.giftwrap.elements.PartialManifestFileElement;
 import org.fluttercode.giftwrap.testmodel.Car;

@@ -28,6 +28,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.fluttercode.giftwrap.api.ArchiveElement;
+import org.fluttercode.giftwrap.api.DeploymentContext;
+
 /**
  * @author Andy Gibson
  * 

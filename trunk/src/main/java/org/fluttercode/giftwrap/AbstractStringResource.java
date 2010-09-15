@@ -23,6 +23,8 @@
 
 package org.fluttercode.giftwrap;
 
+import org.fluttercode.giftwrap.api.DeploymentContext;
+
 
 /**
  * Abstract class for adding manifest resources that are based on string content 

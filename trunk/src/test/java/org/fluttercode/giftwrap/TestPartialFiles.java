@@ -23,10 +23,10 @@
 
 package org.fluttercode.giftwrap;
 
-import org.fluttercode.giftwrap.ArchiveElement;
 import org.fluttercode.giftwrap.ArchiveRoot;
-import org.fluttercode.giftwrap.DeploymentContext;
 import org.fluttercode.giftwrap.PartialFileList;
+import org.fluttercode.giftwrap.api.ArchiveElement;
+import org.fluttercode.giftwrap.api.DeploymentContext;
 import org.fluttercode.giftwrap.elements.PartialManifestFileElement;
 import org.junit.Assert;
 import org.junit.Before;

@@ -32,7 +32,7 @@ import java.util.List;
 import java.util.Set;
 
 import org.fluttercode.giftwrap.AbstractArchiveElement;
-import org.fluttercode.giftwrap.DeploymentContext;
+import org.fluttercode.giftwrap.api.DeploymentContext;
 
 /**
  * @author Andy Gibson

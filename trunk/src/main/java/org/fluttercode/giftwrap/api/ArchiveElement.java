@@ -21,7 +21,8 @@
  *
  */
 
-package org.fluttercode.giftwrap;
+package org.fluttercode.giftwrap.api;
+
 
 
 /**
