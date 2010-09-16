@@ -100,5 +100,15 @@ public class MockDeploymentContext extends AbstractDeploymentContext {
 		// TODO Auto-generated method stub
 		return super.getClassesAdded();
 	}
+
+	@Override
+	public void addManifestResource(byte[] content, String name) {
+		log.add(String.format("adding manifest resource %s [%s]",name,content));		
+	}
+
+	@Override
+	public void addResource(byte[] content, String name) {
+		log.add(String.format("adding resource %s [%s]",name,content));		
+	}
 	
 }

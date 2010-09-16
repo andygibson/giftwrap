@@ -23,8 +23,10 @@
 
 package org.fluttercode.giftwrap.elements;
 
+import org.fluttercode.giftwrap.api.ContentProducer;
 import org.fluttercode.giftwrap.api.DeploymentContext;
 import org.fluttercode.giftwrap.impl.AbstractPartialFileElement;
+import org.fluttercode.giftwrap.impl.producer.StringContentProducer;
 
 /**
  * @author Andy Gibson
@@ -32,17 +34,29 @@ import org.fluttercode.giftwrap.impl.AbstractPartialFileElement;
  */
 public class PartialManifestFileElement extends AbstractPartialFileElement {
 
-	public PartialManifestFileElement(String name, String content, int order) {
-		super(name, content, order);
+	public PartialManifestFileElement(String name, String content) {
+		this(name, content, 0);
+
 	}
 
-	public PartialManifestFileElement(String name, String content) {
-		super(name, content);
+	public PartialManifestFileElement(String name, String content, int order) {
+		this(name, new StringContentProducer(content), order);
+	}
+
+	public PartialManifestFileElement(String name, ContentProducer producer,
+			int order) {
+		super(name, producer, order);
+	}
+
+	public PartialManifestFileElement(String name, ContentProducer producer) {
+		super(name, producer, 0);
 	}
 
 	@Override
-	protected void doAppendContent(String content, DeploymentContext context) {
-		context.addPartialManifestResource(getName(), content, getOrder());
+	public void doAppend(DeploymentContext context) {
+		String string = new String(getProducer().produce());
+		context.addPartialManifestResource(getName(), string, getOrder());
+
 	}
 
 }

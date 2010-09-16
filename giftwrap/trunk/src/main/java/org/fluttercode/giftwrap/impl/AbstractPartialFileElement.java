@@ -23,23 +23,25 @@
 
 package org.fluttercode.giftwrap.impl;
 
+import org.fluttercode.giftwrap.api.ContentProducer;
 
 /**
  * @author Andy Gibson
  * 
  */
-public abstract class AbstractPartialFileElement extends
-		AbstractMultilineStringElement {
+public abstract class AbstractPartialFileElement extends NamedResourceElement {
 
+	private ContentProducer producer;
 	private int order;
 
-	public AbstractPartialFileElement(String name, String content) {
-		this(name, content, 0);
+	public AbstractPartialFileElement(String name, ContentProducer producer) {
+		this(name, producer, 0);
 	}
 
-	public AbstractPartialFileElement(String name, String content, int order) {
+	public AbstractPartialFileElement(String name, ContentProducer producer,
+			int order) {
 		super(name);
-		getLines().add(content);
+		this.producer = producer;
 		this.order = order;
 	}
 
@@ -49,5 +51,9 @@ public abstract class AbstractPartialFileElement extends
 
 	public void setOrder(int order) {
 		this.order = order;
+	}
+
+	public ContentProducer getProducer() {
+		return producer;
 	}
 }

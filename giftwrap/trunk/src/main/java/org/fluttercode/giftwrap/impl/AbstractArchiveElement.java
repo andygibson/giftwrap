@@ -37,47 +37,23 @@ import org.fluttercode.giftwrap.api.DeploymentContext;
  */
 public abstract class AbstractArchiveElement implements ArchiveElement {
 
-	private List<String> includeProfile = new ArrayList<String>();
-	private List<String> excludeProfile = new ArrayList<String>();
+	private ProfileHolder profiles = new ProfileHolder();
 
 	@Override
 	public ArchiveElement addIncludeProfile(String profile) {
-		includeProfile.add(profile);
+		profiles.includeProfile(profile);		
 		return this; 
 	}
 
 	@Override
 	public ArchiveElement addExcludeProfile(String profile) {
-		excludeProfile.add(profile);
+		profiles.excludeProfile(profile);
 		return this;
 	}
 	
 	
-	 /**
-	  * This element is active if : 
-	  * 
-	  * (At least one of the includeProfiles are active 
-	  * OR there are no include profiles)
-	  * AND
-	  * there are no exclude profiles active 
-	  * 
-	 * @param context
-	 * @return whether this element is active in this context
-	 */
 	public boolean isActive(DeploymentContext context) {
-		boolean active = includeProfile.size() == 0;		
-		for (String profile : includeProfile) {
-			if (context.getProfiles().contains(profile)) {
-				active = true;
-			}
-		}
-
-		for (String profile : excludeProfile) {
-			if (context.getProfiles().contains(profile)) {
-				active = false;
-			}
-		}
-		return active;
+		return profiles.isActive(context);
 	}
 
 	

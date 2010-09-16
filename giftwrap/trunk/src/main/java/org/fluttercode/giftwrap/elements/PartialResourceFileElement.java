@@ -23,6 +23,7 @@
 
 package org.fluttercode.giftwrap.elements;
 
+import org.fluttercode.giftwrap.api.ContentProducer;
 import org.fluttercode.giftwrap.api.DeploymentContext;
 import org.fluttercode.giftwrap.impl.AbstractPartialFileElement;
 
@@ -32,17 +33,19 @@ import org.fluttercode.giftwrap.impl.AbstractPartialFileElement;
  */
 public class PartialResourceFileElement extends AbstractPartialFileElement {
 
-	public PartialResourceFileElement(String name, String content, int order) {
-		super(name, content, order);
+	public PartialResourceFileElement(String name, ContentProducer producer,
+			int order) {
+		super(name, producer, order);
 	}
 
-	public PartialResourceFileElement(String name, String content) {
-		super(name, content);
+	public PartialResourceFileElement(String name, ContentProducer producer) {
+		super(name, producer, 0);
 	}
 
 	@Override
-	protected void doAppendContent(String content, DeploymentContext context) {
-		context.addPartialResource(getName(), content, getOrder());
+	public void doAppend(DeploymentContext context) {
+		String string = new String(getProducer().produce());
+		context.addPartialResource(getName(), string, getOrder());
 	}
 
 }

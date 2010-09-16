@@ -29,10 +29,10 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import org.fluttercode.giftwrap.api.ArchiveElement;
-import org.fluttercode.giftwrap.api.ElementContainer;
 import org.fluttercode.giftwrap.elements.ClassElement;
 import org.fluttercode.giftwrap.elements.PartialManifestFileElement;
 import org.fluttercode.giftwrap.impl.ArchiveRoot;
+import org.fluttercode.giftwrap.impl.ElementContainer;
 import org.fluttercode.giftwrap.testmodel.Car;
 import org.fluttercode.giftwrap.testmodel.Person;
 import org.junit.Before;
@@ -78,12 +78,11 @@ public class TestProfiles {
 	@Test
 	public void testPartialFileProfile() {
 		final String PROFILE = "SOME_PROFILE";
-		root.addElement(new PartialManifestFileElement("test", "<beans>",-1000)
-		.excludeNewLine());
+		root.addElement(new PartialManifestFileElement("test", "<beans>",-1000));
 		//root.addElement(new PartialManifestFileElement("test", "<somexml>").excludeNewLine().addIncludeProfile("USE_ALTERNATES"));
-		ArchiveElement elem = new PartialManifestFileElement("test", "<somexml>").excludeNewLine().addIncludeProfile(PROFILE); 
+		ArchiveElement elem = new PartialManifestFileElement("test", "<somexml>").addIncludeProfile(PROFILE); 
 		root.addElement(elem);
-		root.addElement(new PartialManifestFileElement("test", "</beans>",1000).excludeNewLine());
+		root.addElement(new PartialManifestFileElement("test", "</beans>",1000));
 		
 		//check the middle doesn't appear in the final document
 		root.produceDeployment(dc);

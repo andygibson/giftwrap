@@ -24,7 +24,6 @@
 package org.fluttercode.giftwrap.impl;
 
 import org.fluttercode.giftwrap.api.DeploymentContext;
-import org.fluttercode.giftwrap.api.ElementContainer;
 import org.fluttercode.giftwrap.shrinkwrap.ArchiveDeployment;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 

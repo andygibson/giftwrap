@@ -21,14 +21,15 @@
  *
  */
 
-package org.fluttercode.giftwrap.api;
+package org.fluttercode.giftwrap.impl;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import org.fluttercode.giftwrap.api.ArchiveElement;
+import org.fluttercode.giftwrap.api.DeploymentContext;
 import org.fluttercode.giftwrap.elements.ClassElement;
 import org.fluttercode.giftwrap.elements.Packages;
-import org.fluttercode.giftwrap.impl.AbstractArchiveElement;
 
 /**
  * @author Andy Gibson

@@ -44,6 +44,9 @@ public interface DeploymentContext {
 	void addManifestResource(String content, String name);
 	void addManifestResource(File file, String name);
 	void addManifestResource(URL url, String name);
+	void addManifestResource(byte[] content, String name);
+	
+	void addResource(byte[] content, String name);
 	
 	void addPartialManifestResource(String name,String content,int order);
 	void addPartialResource(String name,String content,int order);

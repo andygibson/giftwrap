@@ -114,4 +114,18 @@ public class ArchiveDeployment extends AbstractDeploymentContext {
 		reset();
 	}
 
+	@Override
+	public void addManifestResource(byte[] content, String name) {
+		ArchivePath path = ArchivePaths.create(name);
+		ByteArrayAsset asset = new ByteArrayAsset(content);
+		getArchive().addManifestResource(asset, path);		
+	}
+	
+	@Override
+	public void addResource(byte[] content, String name) {
+		ArchivePath path = ArchivePaths.create(name);
+		ByteArrayAsset asset = new ByteArrayAsset(content);
+		getArchive().addResource(asset, path);					
+	}
+
 }

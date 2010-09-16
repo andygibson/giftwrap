@@ -26,6 +26,7 @@ package org.fluttercode.giftwrap;
 import org.fluttercode.giftwrap.elements.PartialManifestFileElement;
 import org.fluttercode.giftwrap.impl.ArchiveRoot;
 import org.fluttercode.giftwrap.impl.PartialFileList;
+import org.fluttercode.giftwrap.impl.producer.StringContentProducer;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -47,9 +48,9 @@ public class TestPartialFiles {
 	
 	@Test
 	public void testPartialFile() {
-		root.addElement(new PartialManifestFileElement("testResource","abc").excludeNewLine());
-		root.addElement(new PartialManifestFileElement("testResource","123").excludeNewLine());
-		root.addElement(new PartialManifestFileElement("testResource","xyz").excludeNewLine());
+		root.addElement(new PartialManifestFileElement("testResource",new StringContentProducer("abc")));
+		root.addElement(new PartialManifestFileElement("testResource",new StringContentProducer("123")));
+		root.addElement(new PartialManifestFileElement("testResource",new StringContentProducer("xyz")));
 		
 		//get element
 		root.produceDeployment(dc);
@@ -62,8 +63,8 @@ public class TestPartialFiles {
 	
 	@Test
 	public void testPartialFileOrdering() {
-		root.addElement(new PartialManifestFileElement("testResource","abc",5).excludeNewLine());
-		root.addElement(new PartialManifestFileElement("testResource","123",0).excludeNewLine());
+		root.addElement(new PartialManifestFileElement("testResource","abc",5));
+		root.addElement(new PartialManifestFileElement("testResource","123",0));
 		
 		//get element
 		root.produceDeployment(dc);
