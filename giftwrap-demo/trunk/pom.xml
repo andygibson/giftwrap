@@ -18,7 +18,7 @@
 			<groupId>org.jboss.arquillian</groupId>
 			<artifactId>arquillian-junit</artifactId>
 			<version>1.0.0.Alpha3</version>
-			<scope>compile</scope>
+			<scope>test</scope>
 		</dependency>
 
 		<dependency>
@@ -40,7 +40,7 @@
 					<artifactId>weld-core</artifactId>
 					<version>1.0.1-SP4</version>
 					<type>jar</type>
-					<scope>compile</scope>
+					<scope>provided</scope>
 				</dependency>
 				<dependency>
 					<groupId>org.jboss.arquillian.container</groupId>

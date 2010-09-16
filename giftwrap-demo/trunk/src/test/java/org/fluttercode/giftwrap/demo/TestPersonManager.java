@@ -27,18 +27,17 @@ import static org.junit.Assert.assertEquals;
 
 import javax.inject.Inject;
 
+import org.fluttercode.giftwrap.api.ArchiveElement;
 import org.fluttercode.giftwrap.demo.bean.DefaultRatingProducer;
 import org.fluttercode.giftwrap.demo.bean.NorthEastRatingProducer;
 import org.fluttercode.giftwrap.demo.bean.PersonManager;
-import org.fluttercode.giftwrap.elements.BeansXmlElement;
 import org.fluttercode.giftwrap.elements.PartialManifestFileElement;
 import org.fluttercode.giftwrap.impl.ArchiveRoot;
 import org.fluttercode.giftwrap.shrinkwrap.ArchiveDeployment;
 import org.jboss.arquillian.api.Deployment;
-import org.jboss.arquillian.api.Run;
-import org.jboss.arquillian.api.RunModeType;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.Archive;
+import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -55,14 +54,20 @@ public class TestPersonManager {
 	@Inject
 	private PersonManager manager;
 	
+	
+	public static Archive<?> createDeploy() {
+		return ShrinkWrap.create(JavaArchive.class, "test.jar");
+	}
+	
 	@Deployment
-	public static Archive<?> createDeploymentPackagex() {
+	public static Archive<?> createDeploymentPackage() {
+		
 		ArchiveRoot root = new ArchiveRoot();		
 		root.addClass(PersonManager.class,true);
 		root.addClass(DefaultRatingProducer.class);
 		root.addClass(NorthEastRatingProducer.class);
-		root.addPackage("org.fluttercode.giftwrap.demo.model");
-		root.addPackage("org.shrinkwrap");
+		
+				
 		
 		root.addElement(new PartialManifestFileElement(BEANS_FILE, "<beans>",-99))
 		.addElement(new PartialManifestFileElement(BEANS_FILE, "<alternatives>",-10))

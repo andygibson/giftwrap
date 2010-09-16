@@ -32,7 +32,7 @@ import org.fluttercode.giftwrap.demo.model.RatingProducer;
  * @author Andy Gibson
  * 
  */
-public class NorthEastRatingProducer implements RatingProducer {
+public class NorthEastRatingProducer  implements RatingProducer {
 
 	public int getRating() {
 		return 1;
