@@ -1,7 +1,7 @@
 package org.fluttercode.giftwrap.impl.producer;
 
-import org.xmldsl.model.DocumentNode;
-import org.xmldsl.model.export.StringExporter;
+import org.fluttercode.giftwrap.xml.DocumentNode;
+import org.fluttercode.giftwrap.xml.exporter.StringExporter;
 
 public class XmlProducer extends AbstractStringContentProducer {
 
