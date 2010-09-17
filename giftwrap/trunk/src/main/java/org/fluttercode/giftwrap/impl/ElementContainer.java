@@ -29,13 +29,13 @@ import java.util.List;
 import org.fluttercode.giftwrap.api.ArchiveElement;
 import org.fluttercode.giftwrap.api.DeploymentContext;
 import org.fluttercode.giftwrap.elements.ClassElement;
-import org.fluttercode.giftwrap.elements.Packages;
+import org.fluttercode.giftwrap.elements.PackageElement;
 
 /**
  * @author Andy Gibson
  * 
  */
-public class ElementContainer extends AbstractArchiveElement{
+public class ElementContainer extends AbstractArchiveElement {
 
 	List<ArchiveElement> elements = new ArrayList<ArchiveElement>();
 
@@ -43,7 +43,7 @@ public class ElementContainer extends AbstractArchiveElement{
 	public void doAppend(DeploymentContext context) {
 		for (ArchiveElement element : elements) {
 			element.append(context);
-		}		
+		}
 	}
 
 	public ElementContainer addElement(ArchiveElement element) {
@@ -65,19 +65,41 @@ public class ElementContainer extends AbstractArchiveElement{
 	}
 
 	public ElementContainer addPackage(Package pkge, boolean recursive) {
-		return addElement(new Packages(pkge, recursive));
+		return addElement(new PackageElement(pkge, recursive));
 	}
 
 	public ElementContainer addPackage(Package pkge) {
-		return addElement(new Packages(pkge));
+		return addElement(new PackageElement(pkge));
 	}
-	
+
+	public ElementContainer addPackages(String rootPackage,
+			String... subPackages) {
+		for (String s : subPackages) {
+			addPackage(rootPackage + "." + s);
+		}
+		return this;
+	}
+
 	public ElementContainer addPackage(String packageName) {
 		Package p = Package.getPackage(packageName);
 		if (p == null) {
-			throw new IllegalArgumentException("Package "+packageName+" not found");
+			throw new IllegalArgumentException("Package " + packageName
+					+ " not found");
 		}
 		return addPackage(p);
 	}
+
+	public ElementContainer addPackageForClass(Class<?> clazz) {
+		return addPackage(clazz.getPackage());
+	}
+
+	public ElementContainer addPackageForClasses(boolean recursive,Class<?>... classes) {
+		for (Class<?> clazz : classes) {
+			addPackage(clazz.getPackage(),recursive);
+		}
+		return this;
+	}
+	
+	
 
 }

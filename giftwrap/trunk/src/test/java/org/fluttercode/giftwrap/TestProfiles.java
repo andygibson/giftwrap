@@ -62,14 +62,14 @@ public class TestProfiles {
 	@Test
 	public void testProfileInactiveExclusion() {
 		ArchiveElement element = new ClassElement(TestProfiles.class);
-		element.addExcludeProfile("SOMEVALUE");
+		element.excludeFrom("SOMEVALUE");
 		assertTrue(element.isActive(dc));		
 	}
 
 	@Test
 	public void testProfileActiveOnDemand() {
 		ArchiveElement element = new ClassElement(TestProfiles.class);
-		element.addIncludeProfile("PROFILE");
+		element.includeIn("PROFILE");
 		assertFalse(element.isActive(dc));
 		dc.getProfiles().add("PROFILE");
 		assertTrue(element.isActive(dc));
@@ -80,7 +80,7 @@ public class TestProfiles {
 		final String PROFILE = "SOME_PROFILE";
 		root.addElement(new PartialManifestFileElement("test", "<beans>",-1000));
 		//root.addElement(new PartialManifestFileElement("test", "<somexml>").excludeNewLine().addIncludeProfile("USE_ALTERNATES"));
-		ArchiveElement elem = new PartialManifestFileElement("test", "<somexml>").addIncludeProfile(PROFILE); 
+		ArchiveElement elem = new PartialManifestFileElement("test", "<somexml>").includeIn(PROFILE); 
 		root.addElement(elem);
 		root.addElement(new PartialManifestFileElement("test", "</beans>",1000));
 		
@@ -105,7 +105,7 @@ public class TestProfiles {
 	public void testProfileExlusions() {
 
 		ArchiveElement element = new ClassElement(this.getClass());
-		element.addIncludeProfile("USE");
+		element.includeIn("USE");
 		root.addElement(element);
 		dc.getProfiles().add("IGNORE");
 		dc.getProfiles().add("USE");
@@ -115,7 +115,7 @@ public class TestProfiles {
 		
 		dc.reset();
 		
-		element.addExcludeProfile("IGNORE");
+		element.excludeFrom("IGNORE");
 		assertFalse(element.isActive(dc));
 		assertFalse(dc.getClassesAdded().contains(this.getClass()));
 		
@@ -133,8 +133,8 @@ public class TestProfiles {
 		container1.addElement(element1);
 		container2.addElement(element2);
 		
-		container1.addIncludeProfile("C1");
-		container2.addIncludeProfile("C2");
+		container1.includeIn("C1");
+		container2.includeIn("C2");
 		
 		root.addElement(container1);
 		root.addElement(container2);

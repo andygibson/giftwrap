@@ -35,24 +35,24 @@ import org.jboss.shrinkwrap.api.spec.JavaArchive;
  * @author Andy Gibson
  * 
  */
-public class Packages extends AbstractArchiveElement {
+public class PackageElement extends AbstractArchiveElement {
 
 	private List<Package> packageList = new ArrayList<Package>();
 	private boolean recursive;
 
-	public Packages() {
+	public PackageElement() {
 		this(false);
 	}
 
-	public Packages(boolean recursive) {
+	public PackageElement(boolean recursive) {
 		this.recursive = recursive;
 	}
 	
-	public Packages(Package pack) {
+	public PackageElement(Package pack) {
 		this(pack,false);
 	}
 	
-	public Packages(Package pack,boolean recursive) {
+	public PackageElement(Package pack,boolean recursive) {
 /*
  * Copyright 2010, Andrew M Gibson
  *
@@ -110,7 +110,7 @@ public class Packages extends AbstractArchiveElement {
 		}
 	}
 
-	public Packages addPackage(Package packge) {
+	public PackageElement addPackage(Package packge) {
 /*
  * Copyright 2010, Andrew M Gibson
  *
@@ -161,11 +161,11 @@ public class Packages extends AbstractArchiveElement {
 		return this;
 	}
 
-	public Packages addPackage(String packageName) {
+	public PackageElement addPackage(String packageName) {
 		return addPackage(Package.getPackage(packageName));
 	}
 
-	public Packages addPackages(Package... packages) {
+	public PackageElement addPackages(Package... packages) {
 		for (Package p : packages) {
 			addPackage(p);
 		}

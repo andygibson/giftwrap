@@ -5,11 +5,11 @@ import org.fluttercode.giftwrap.api.DeploymentContext;
 import org.fluttercode.giftwrap.impl.AbstractArchiveElement;
 import org.fluttercode.giftwrap.impl.NamedResourceElement;
 
-public class Resource extends NamedResourceElement {
+public class ResourceElement extends NamedResourceElement {
 
 	private ContentProducer producer;
 
-	public Resource(String name, ContentProducer producer) {
+	public ResourceElement(String name, ContentProducer producer) {
 		super(name);
 		this.producer = producer;
 	}

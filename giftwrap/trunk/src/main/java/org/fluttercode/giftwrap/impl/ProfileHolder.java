@@ -11,11 +11,11 @@ public class ProfileHolder {
 	private List<String> includeProfile = new ArrayList<String>();
 	private List<String> excludeProfile = new ArrayList<String>();
 
-	public void includeProfile(String profile) {
+	public void addToIncludeProfile(String profile) {
 		includeProfile.add(profile);
 	}
 
-	public void excludeProfile(String profile) {
+	public void addToExcludeProfile(String profile) {
 		excludeProfile.add(profile);
 	}
 

@@ -40,14 +40,14 @@ public abstract class AbstractArchiveElement implements ArchiveElement {
 	private ProfileHolder profiles = new ProfileHolder();
 
 	@Override
-	public ArchiveElement addIncludeProfile(String profile) {
-		profiles.includeProfile(profile);		
+	public ArchiveElement includeIn(String profile) {
+		profiles.addToIncludeProfile(profile);		
 		return this; 
 	}
 
 	@Override
-	public ArchiveElement addExcludeProfile(String profile) {
-		profiles.excludeProfile(profile);
+	public ArchiveElement excludeFrom(String profile) {
+		profiles.addToExcludeProfile(profile);
 		return this;
 	}
 	
@@ -63,7 +63,10 @@ public abstract class AbstractArchiveElement implements ArchiveElement {
 	public void append(DeploymentContext context) {
 		if (isActive(context)) {
 			doAppend(context);
-		}
-		
+		}		
+	}
+	
+	public ElementContainer addTo(ElementContainer container) {
+		return container.addElement(this);		
 	}
 }

@@ -47,10 +47,18 @@ public class ArchiveDeployment extends AbstractDeploymentContext {
 
 	private Map<String, Object> parameterMap = new HashMap<String, Object>();
 
-	public static JavaArchive generate(ArchiveRoot root) {
+	public static JavaArchive generate(ArchiveRoot root, String... profiles) {
 		ArchiveDeployment deployment = new ArchiveDeployment();
+		for (String p : profiles) {
+			deployment.addProfile(p);
+		}
 		root.produceDeployment(deployment);
 		return deployment.getArchive();
+
+	}
+
+	public static JavaArchive generate(ArchiveRoot root) {
+		return generate(root,new String[] {});
 	}
 
 	public ArchiveDeployment(JavaArchive archive) {
@@ -118,14 +126,14 @@ public class ArchiveDeployment extends AbstractDeploymentContext {
 	public void addManifestResource(byte[] content, String name) {
 		ArchivePath path = ArchivePaths.create(name);
 		ByteArrayAsset asset = new ByteArrayAsset(content);
-		getArchive().addManifestResource(asset, path);		
+		getArchive().addManifestResource(asset, path);
 	}
-	
+
 	@Override
 	public void addResource(byte[] content, String name) {
 		ArchivePath path = ArchivePaths.create(name);
 		ByteArrayAsset asset = new ByteArrayAsset(content);
-		getArchive().addResource(asset, path);					
+		getArchive().addResource(asset, path);
 	}
 
 }

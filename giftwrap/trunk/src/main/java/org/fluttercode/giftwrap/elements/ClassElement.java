@@ -61,7 +61,11 @@ public class ClassElement extends AbstractArchiveElement {
 		globallyExemptClasses.add(String.class.getName());
 		globallyExemptClasses.add("int");
 		globallyExemptClasses.add("long");
-		globallyExemptClasses.add("int");
+		globallyExemptClasses.add("float");
+		globallyExemptClasses.add("double");
+		globallyExemptClasses.add("byte");
+		globallyExemptClasses.add("boolean");
+		globallyExemptClasses.add("java.*");
 	}
 
 	private Class<? extends Object> clazz;
@@ -100,12 +104,21 @@ public class ClassElement extends AbstractArchiveElement {
 		return exemptions;
 	}
 
+	public boolean allowClassToBeAdded(Class<?> clazz) {
+		if (clazz== null) {return false;}
+		//System.out.println("checking class "+clazz);
+		if (clazz.getName().startsWith("java.")) {
+			return false;
+		}
+		return (!exemptions.contains(clazz) && !globallyExemptClasses.contains(clazz.getName()));
+	}
+		
 	private void addClass(Class<?> classToAdd, List<Class<?>> classesAdded) {
 
 		if (!classesAdded.contains(classToAdd)
-				&& !exemptions.contains(classToAdd)
-				&& !globallyExemptClasses.contains(classToAdd.getName())) {
+				&& allowClassToBeAdded(classToAdd)) {
 
+			System.out.println("Adding class : "+classToAdd);
 			classesAdded.add(classToAdd);
 			if (recursive) {
 				addDependencies(classToAdd, classesAdded);

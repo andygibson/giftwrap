@@ -23,8 +23,12 @@
 
 package org.fluttercode.giftwrap.impl;
 
+import org.fluttercode.giftwrap.api.ArchiveElement;
 import org.fluttercode.giftwrap.api.DeploymentContext;
+import org.fluttercode.giftwrap.elements.ClassElement;
 import org.fluttercode.giftwrap.shrinkwrap.ArchiveDeployment;
+import org.fluttercode.giftwrap.xml.Document;
+import org.fluttercode.giftwrap.xml.exporter.DocumentExporter;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 
 /**
@@ -34,7 +38,13 @@ import org.jboss.shrinkwrap.api.spec.JavaArchive;
 public class ArchiveRoot extends ElementContainer {
 
  	public ArchiveRoot() {
-		addPackage(Package.getPackage("org.fluttercode.giftwrap"),true);
+ 		addPackageForClasses(true,new Class<?>[] {
+ 				DocumentExporter.class,
+ 				Document.class,
+ 				ArchiveDeployment.class,
+ 				ArchiveElement.class,
+ 				ClassElement.class,
+ 				ArchiveRoot.class});
 	}
 
 	public JavaArchive produceArchive() {
