@@ -31,6 +31,18 @@ public class Person {
 
 	private String firstName;
 	private String lastName;
-	
+
 	private Car vehicle;
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public Car getVehicle() {
+		return vehicle;
+	}
 }

@@ -26,8 +26,6 @@ package org.fluttercode.giftwrap.impl.producer;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.fluttercode.giftwrap.api.ContentProducer;
-
 /**
  * @author Andy Gibson
  * 

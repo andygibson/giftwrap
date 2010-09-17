@@ -23,18 +23,15 @@
 
 package org.fluttercode.giftwrap;
 
-import org.fluttercode.giftwrap.api.DeploymentContext;
-import org.fluttercode.giftwrap.elements.jee.PersistenceUnit;
-import org.fluttercode.giftwrap.elements.jee.PersistenceXml;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
 import org.fluttercode.giftwrap.impl.ArchiveRoot;
 import org.fluttercode.giftwrap.impl.ElementContainer;
-import org.fluttercode.giftwrap.shrinkwrap.ArchiveDeployment;
 import org.fluttercode.giftwrap.testmodel.Car;
 import org.fluttercode.giftwrap.testmodel.Company;
 import org.fluttercode.giftwrap.testmodel.Person;
 import org.junit.Test;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.assertFalse;
 
 /**
  * @author Andy Gibson

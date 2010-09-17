@@ -26,7 +26,6 @@ package org.fluttercode.giftwrap.shrinkwrap;
 import java.io.File;
 import java.net.URL;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import org.fluttercode.giftwrap.impl.AbstractDeploymentContext;

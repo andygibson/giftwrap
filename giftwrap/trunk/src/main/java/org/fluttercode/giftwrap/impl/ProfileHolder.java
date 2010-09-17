@@ -26,7 +26,6 @@ package org.fluttercode.giftwrap.impl;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.fluttercode.giftwrap.api.ArchiveElement;
 import org.fluttercode.giftwrap.api.DeploymentContext;
 
 /**

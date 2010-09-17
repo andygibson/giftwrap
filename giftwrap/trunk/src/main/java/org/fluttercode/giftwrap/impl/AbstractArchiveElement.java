@@ -23,11 +23,6 @@
 
 package org.fluttercode.giftwrap.impl;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import org.fluttercode.giftwrap.api.ArchiveElement;
 import org.fluttercode.giftwrap.api.DeploymentContext;
 

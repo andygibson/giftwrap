@@ -26,7 +26,6 @@ package org.fluttercode.giftwrap.elements.jee;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.fluttercode.giftwrap.api.ArchiveElement;
 import org.fluttercode.giftwrap.api.DeploymentContext;
 import org.fluttercode.giftwrap.impl.NamedResourceElement;
 import org.fluttercode.giftwrap.impl.producer.MultiLineContentProducer;

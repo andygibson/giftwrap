@@ -48,6 +48,7 @@ public interface DeploymentContext {
 	
 	void addResource(byte[] content, String name);
 	
+	
 	void addPartialManifestResource(String name,String content,int order);
 	void addPartialResource(String name,String content,int order);
 	void startConstruction();

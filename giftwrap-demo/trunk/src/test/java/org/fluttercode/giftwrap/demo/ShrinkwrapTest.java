@@ -23,25 +23,13 @@
 
 package org.fluttercode.giftwrap.demo;
 
-import static org.fluttercode.giftwrap.xml.DocumentFactory.node;
 import static org.junit.Assert.assertEquals;
 
 import javax.inject.Inject;
 
-import org.fluttercode.giftwrap.api.ArchiveElement;
-import org.fluttercode.giftwrap.api.DeploymentContext;
 import org.fluttercode.giftwrap.demo.bean.DefaultRatingProducer;
-import org.fluttercode.giftwrap.demo.bean.NorthEastRatingProducer;
 import org.fluttercode.giftwrap.demo.bean.PersonManager;
 import org.fluttercode.giftwrap.demo.model.Person;
-import org.fluttercode.giftwrap.demo.model.RatingProducer;
-import org.fluttercode.giftwrap.elements.ManifestResource;
-import org.fluttercode.giftwrap.elements.jee.BeansXml;
-import org.fluttercode.giftwrap.impl.ArchiveRoot;
-import org.fluttercode.giftwrap.shrinkwrap.ArchiveDeployment;
-import org.fluttercode.giftwrap.xml.Document;
-import org.fluttercode.giftwrap.xml.DocumentNode;
-import org.fluttercode.giftwrap.xml.exporter.DocumentExporter;
 import org.jboss.arquillian.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.Archive;
@@ -63,20 +51,18 @@ import org.junit.runner.RunWith;
 @RunWith(Arquillian.class)
 public class ShrinkwrapTest {
 
-	private final static String BEANS_FILE = "beans.xml";
 
 	@Inject
 	private PersonManager personManager;
 
 	@Deployment
 	public static Archive<?> createDeploy() {
+		//hard coded alternatives
 		String beans = "<beans><alternatives><class>"+DefaultRatingProducer.class.getName()+"</class></alternatives></beans>";
 		return ShrinkWrap.create(JavaArchive.class, "test.jar")
 				.addManifestResource(new ByteArrayAsset(beans.getBytes()),ArchivePaths.create("beans.xml"))
 				.addPackages(true,DefaultRatingProducer.class.getPackage())
 				.addPackages(true,Person.class.getPackage());
-				
-				
 	}
 
 

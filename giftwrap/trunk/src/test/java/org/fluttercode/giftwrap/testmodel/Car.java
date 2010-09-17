@@ -35,4 +35,12 @@ public class Car implements Vehicle {
 	public int getTopSpeed() {
 		return 100;
 	}
+
+	public String getColor() {
+		return color;
+	}
+
+	public Company getMake() {
+		return make;
+	}
 }

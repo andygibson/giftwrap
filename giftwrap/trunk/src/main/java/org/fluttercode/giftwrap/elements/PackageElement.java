@@ -26,10 +26,8 @@ package org.fluttercode.giftwrap.elements;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.fluttercode.giftwrap.api.ArchiveElement;
 import org.fluttercode.giftwrap.api.DeploymentContext;
 import org.fluttercode.giftwrap.impl.AbstractArchiveElement;
-import org.jboss.shrinkwrap.api.spec.JavaArchive;
 
 /**
  * @author Andy Gibson

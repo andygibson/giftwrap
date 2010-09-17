@@ -31,4 +31,12 @@ public class Company {
 
 	private Person owner;
 	private String title;
+	
+	public Person getOwner() {
+		return owner;
+	}
+	
+	public String getTitle() {
+		return title;
+	}
 }

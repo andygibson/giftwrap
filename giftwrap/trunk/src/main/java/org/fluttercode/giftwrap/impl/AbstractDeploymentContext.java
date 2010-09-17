@@ -125,14 +125,14 @@ public abstract class AbstractDeploymentContext implements DeploymentContext {
 	@Override
 	public void endConstruction() {
 		//assemble and add partial files
-		for (String s : resourcePartialFiles.nameSet()) {
-			String content = resourcePartialFiles.buildFileContent(s);
-			//addResource(content,s);
+		for (String name : resourcePartialFiles.nameSet()) {
+			String content = resourcePartialFiles.buildFileContent(name);
+			addResource(content.getBytes(),name);
 		}
 
-		for (String s : manifestPartialFiles.nameSet()) {
-			String content = manifestPartialFiles.buildFileContent(s);
-			addManifestResource(content, s);
+		for (String name : manifestPartialFiles.nameSet()) {
+			String content = manifestPartialFiles.buildFileContent(name);
+			addManifestResource(content, name);
 		}
 		
 	}

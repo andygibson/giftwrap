@@ -25,7 +25,6 @@ package org.fluttercode.giftwrap.elements;
 
 import org.fluttercode.giftwrap.api.ContentProducer;
 import org.fluttercode.giftwrap.api.DeploymentContext;
-import org.fluttercode.giftwrap.impl.AbstractArchiveElement;
 import org.fluttercode.giftwrap.impl.NamedResourceElement;
 
 /**

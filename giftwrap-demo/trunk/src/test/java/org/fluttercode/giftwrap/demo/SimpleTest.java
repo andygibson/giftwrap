@@ -63,7 +63,6 @@ import org.junit.runner.RunWith;
 @RunWith(Arquillian.class)
 public class SimpleTest {
 
-	private final static String BEANS_FILE = "beans.xml";
 
 	@Inject
 	private PersonManager personManager;
