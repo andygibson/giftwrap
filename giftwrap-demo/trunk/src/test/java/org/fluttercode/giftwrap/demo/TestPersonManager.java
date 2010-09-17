@@ -40,6 +40,10 @@ import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+/**
+ * @author Andy Gibson
+ * 
+ */
 @RunWith(Arquillian.class)
 /**
  * @author Andy Gibson

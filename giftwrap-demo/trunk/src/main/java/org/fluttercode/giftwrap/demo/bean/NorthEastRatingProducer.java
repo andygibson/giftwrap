@@ -27,11 +27,11 @@ import javax.enterprise.inject.Alternative;
 
 import org.fluttercode.giftwrap.demo.model.RatingProducer;
 
-@Alternative
 /**
  * @author Andy Gibson
  * 
  */
+@Alternative
 public class NorthEastRatingProducer  implements RatingProducer {
 
 	public int getRating() {
