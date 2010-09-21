@@ -62,7 +62,7 @@ public class TestPersonManager {
 		root.addClass(PersonManager.class, true);
 
 		// two implementations of the same interface (not referenced in code,
-		// injected only so we can't automatically pick it up
+		// they are injected only so we can't automatically pick them up
 		root.addClass(DefaultRatingProducer.class);
 		root.addClass(NorthEastRatingProducer.class);
 
@@ -72,7 +72,7 @@ public class TestPersonManager {
 						.excludeFrom("NE")).add(
 				new BeansXml().addAlternative(NorthEastRatingProducer.class).includeIn("NE")));
 
-		//Create the archive for the North Easy profile		
+		//Create the archive for the North East profile		
 		JavaArchive ar = ArchiveDeployment.generate(root, "NE");
 		return ar;
 
