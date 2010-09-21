@@ -30,6 +30,8 @@ import javax.inject.Inject;
 import org.fluttercode.giftwrap.demo.bean.DefaultRatingProducer;
 import org.fluttercode.giftwrap.demo.bean.PersonManager;
 import org.fluttercode.giftwrap.demo.model.Person;
+import org.fluttercode.giftwrap.demo.model.RatingProducer;
+import org.fluttercode.giftwrap.elements.jee.BeansXml;
 import org.jboss.arquillian.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.Archive;
@@ -59,10 +61,16 @@ public class ShrinkwrapTest {
 	public static Archive<?> createDeploy() {
 		//hard coded alternatives
 		String beans = "<beans><alternatives><class>"+DefaultRatingProducer.class.getName()+"</class></alternatives></beans>";
+		BeansXml b = new BeansXml().addAlternative(RatingProducer.class);
+		
 		return ShrinkWrap.create(JavaArchive.class, "test.jar")
 				.addManifestResource(new ByteArrayAsset(beans.getBytes()),ArchivePaths.create("beans.xml"))
 				.addPackages(true,DefaultRatingProducer.class.getPackage())
 				.addPackages(true,Person.class.getPackage());
+				
+				
+	
+		
 	}
 
 

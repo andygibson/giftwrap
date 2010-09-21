@@ -36,7 +36,7 @@ public class PersonManager {
 
 	@Inject
 	private RatingProducer ratingProducer;
-
+	
 	private Person person = new Person();
 
 	public void applyRating() {

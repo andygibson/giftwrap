@@ -47,12 +47,16 @@ public class BeansXml extends NamedResourceElement {
 
 	@Override
 	public void doAppend(DeploymentContext context) {
-		BeansXml build = new BeansXml();
-		mergeBeansXml(build,context);
-		context.addManifestResource(build.buildAsset(), getName());
+		context.addManifestResource(toBytes(context), getName());
 	}
 
-	private byte[] buildAsset() {
+	public byte[] toBytes(DeploymentContext context) {
+		BeansXml build = new BeansXml();
+		mergeBeansXml(build,context);
+		return build.getAsBytes();
+	}
+	
+	private byte[] getAsBytes() {
 		MultiLineContentProducer prod = new MultiLineContentProducer();
 		prod.add("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
 		prod.add("<beans xmlns=\"http://java.sun.com/xml/ns/javaee\"");

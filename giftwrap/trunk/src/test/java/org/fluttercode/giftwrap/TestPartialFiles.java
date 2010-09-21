@@ -48,9 +48,9 @@ public class TestPartialFiles {
 	
 	@Test
 	public void testPartialFile() {
-		root.addElement(new PartialManifestFileElement("testResource",new StringContentProducer("abc")));
-		root.addElement(new PartialManifestFileElement("testResource",new StringContentProducer("123")));
-		root.addElement(new PartialManifestFileElement("testResource",new StringContentProducer("xyz")));
+		root.addElement(new PartialManifestFileElement("testResource","abc"));
+		root.addElement(new PartialManifestFileElement("testResource","123"));		
+		root.addElement(new PartialManifestFileElement("testResource","xyz"));
 		
 		//get element
 		root.produceDeployment(dc);

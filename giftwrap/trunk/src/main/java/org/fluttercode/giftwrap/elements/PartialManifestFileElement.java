@@ -51,6 +51,7 @@ public class PartialManifestFileElement extends AbstractPartialFileElement {
 	public PartialManifestFileElement(String name, ContentProducer producer) {
 		super(name, producer, 0);
 	}
+	
 
 	@Override
 	public void doAppend(DeploymentContext context) {
