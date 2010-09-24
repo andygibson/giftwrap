@@ -23,7 +23,10 @@
 
 package org.fluttercode.giftwrap;
 
+import org.fluttercode.giftwrap.api.ArchiveElement;
+import org.fluttercode.giftwrap.api.DeploymentContext;
 import org.fluttercode.giftwrap.elements.PartialManifestFileElement;
+import org.fluttercode.giftwrap.impl.AbstractArchiveElement;
 import org.fluttercode.giftwrap.impl.ArchiveRoot;
 import org.fluttercode.giftwrap.impl.PartialFileList;
 import org.fluttercode.giftwrap.impl.producer.StringContentProducer;
@@ -51,7 +54,7 @@ public class TestPartialFiles {
 		root.addElement(new PartialManifestFileElement("testResource","abc"));
 		root.addElement(new PartialManifestFileElement("testResource","123"));		
 		root.addElement(new PartialManifestFileElement("testResource","xyz"));
-		
+				
 		//get element
 		root.produceDeployment(dc);
 		PartialFileList files = dc.getManifestPartialFiles();
