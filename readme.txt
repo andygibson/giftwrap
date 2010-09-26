@@ -1,0 +1,1 @@
+Giftwrap is a Java helper library for creating more sophisticated ShrinkWrap archives. While ShrinkWrap has a number of uses, primarily, GiftWrap is aims to help make writing tests for Arquillian much easier.
